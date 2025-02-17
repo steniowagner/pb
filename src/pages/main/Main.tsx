@@ -1,4 +1,6 @@
 import { User, Bot } from "lucide-react";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 import { UploadFile } from "./components/upload-file/UploadFile";
 import {
@@ -26,7 +28,7 @@ export const Main = () => {
   }
 
   return (
-    <Card className="max-w-2xl mx-auto">
+    <Card className="mx-auto">
       <CardHeader>
         <CardTitle>Chat Conversation</CardTitle>
       </CardHeader>
@@ -45,7 +47,11 @@ export const Main = () => {
                 <p className="font-semibold">
                   {chat.role === "user" ? "User" : "Assistant"}
                 </p>
-                <p>{chat.content}</p>
+                <div className="break-words text-wrap whitespace-normal max-w-4xl">
+                  <Markdown remarkPlugins={[remarkGfm]}>
+                    {chat.content}
+                  </Markdown>
+                </div>
                 <p className="text-xs text-gray-500 mt-1">
                   Date: {new Date(chat.date).toLocaleString()} | Model:{" "}
                   {chat.model} | Tokens: {chat.num_tokens}
