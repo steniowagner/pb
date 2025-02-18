@@ -47,10 +47,12 @@ export const Main = () => {
                 <p className="font-semibold">
                   {chat.role === "user" ? "User" : "Assistant"}
                 </p>
-                <div className="break-words text-wrap whitespace-normal max-w-4xl">
-                  <Markdown remarkPlugins={[remarkGfm]}>
-                    {chat.content}
-                  </Markdown>
+                <div className="break-words text-wrap whitespace-normal max-w-5xl">
+                  <pre className="break-words text-wrap">
+                    <Markdown remarkPlugins={[remarkGfm]}>
+                      {chat.content}
+                    </Markdown>
+                  </pre>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
                   Date: {new Date(chat.date).toLocaleString()} | Model:{" "}
