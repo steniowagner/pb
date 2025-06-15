@@ -1,7 +1,9 @@
+export type ChatRole = "user" | "assistant" | "system";
+
 export type ChatConversation = {
-  role: "user" | "assistant";
+  role: ChatRole;
   model: string;
   content: string;
-  num_tokens: number;
+  tokens: number;
   date: string;
 };
